@@ -1,0 +1,25 @@
+{
+  "name": "kavachajs",
+  "version": "1.0.0",
+  "description": "node.js Security Analysis Tool",
+  "main": "kavacha.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avemuri57/kavacha.git"
+  },
+  "keywords": [
+    "Security"
+  ],
+  "author": "Anand Vemuri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avemuri57/kavacha/issues"
+  },
+  "homepage": "https://github.com/avemuri57/kavacha#readme",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  }
+}
