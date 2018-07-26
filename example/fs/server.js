@@ -1,15 +1,17 @@
 const express = require('express');
-const fs = require('fs');
-
+const fs_module = require('fs');
+var x = 1+1;
 const app = express();
 
-
+/**
 app.get("/",(req,res) => {
 	res.send("Hello World");
 });
+**/
 
 app.get("/read/:path",(req,res) => {
-	var x = fs.readFile(req.params.path,(err,file) => {
+	var x = 5;
+	fs_module.readFile(req.params.path,(err,file) => {
 		if(err){
 			res.send(err);
 		}else{
@@ -18,6 +20,7 @@ app.get("/read/:path",(req,res) => {
 	})
 	
 });
+
 
 
 app.listen(8081, () => {
