@@ -1,9 +1,10 @@
 const esprima = require('esprima');
 const fs = require('fs');
 const { IS_API_NODE, API_PATH, API_BODY } = require('./httpTraversers');
-const { RHS_VALUE } = require('./VariableDeclaratorTraversers.js');
+const { RHS_VALUE, LHS_VALUE } = require('./VariableDeclaratorTraversers.js');
 const { IS_BINARY_EXPRESSION , GET_LHS} = require('./BinaryExpressionTraverser')
-var fsExample = fs.readFileSync("./example/basic.js","utf-8");
+const { GET_ARGS } = require('./CallExpressionTraverser.js');
+var fsExample = fs.readFileSync("./example/fs/server.js","utf-8");
 
 
 
@@ -13,7 +14,20 @@ var ast = esprima.parseModule(fsExample,{},function(node,metadata){});
 
 
 var binary_expr = RHS_VALUE(ast.body[0])
-console.log(GET_LHS(binary_expr))
+//var call_fxn = ast.body[5].expression
+let block = ast.body
+for(var i = 0;i<block.length;i++){
+	if(block[i].type === 'VariableDeclaration'){
+		
+			console.log(block[i]);
+		
+		
+
+	}
+	
+}
+
+
 // && node.init && node.init.callee && node.init.callee.name == 'require'
 
 
@@ -21,7 +35,6 @@ function IS_VAR_DECL_NODE(node){
 	if(node.type == 'VariableDeclarator'){
 		return true;
 	}
-
 	return false;
 }
 

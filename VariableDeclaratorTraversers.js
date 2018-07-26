@@ -10,7 +10,9 @@ module.exports = {
 		return block.kind
 	},
 	LHS_VALUE :function(block){
+		if(block.type == 'VariableDeclaration'){
 		return block.declarations[0].id.name
+		}
 	},
 	RHS_VALUE :function(block){
 		return block.declarations[0].init
