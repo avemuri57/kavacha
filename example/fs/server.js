@@ -1,6 +1,6 @@
 const express = require('express');
 const fs_module = require('fs');
-var x = 1+1;
+var x = 1;
 const app = express();
 
 /**

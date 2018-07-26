@@ -1,7 +1,7 @@
 const esprima = require('esprima');
 const fs = require('fs');
 const { IS_API_NODE, API_PATH, API_BODY } = require('./httpTraversers');
-const { RHS_VALUE, LHS_VALUE } = require('./VariableDeclaratorTraversers.js');
+const { RHS_VALUE, LHS_VALUE ,IS_ATOMIC } = require('./VariableDeclaratorTraversers.js');
 const { IS_BINARY_EXPRESSION , GET_LHS} = require('./BinaryExpressionTraverser')
 const { GET_ARGS } = require('./CallExpressionTraverser.js');
 var fsExample = fs.readFileSync("./example/fs/server.js","utf-8");
@@ -17,13 +17,12 @@ var binary_expr = RHS_VALUE(ast.body[0])
 //var call_fxn = ast.body[5].expression
 let block = ast.body
 for(var i = 0;i<block.length;i++){
-	if(block[i].type === 'VariableDeclaration'){
-		
-			console.log(block[i]);
+
+			IS_ATOMIC(block[i]);
 		
 		
 
-	}
+	
 	
 }
 
