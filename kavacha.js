@@ -15,14 +15,23 @@ var ast = esprima.parseModule(fsExample,{},function(node,metadata){});
 var binary_expr = RHS_VALUE(ast.body[0]);
 //var call_fxn = ast.body[5].expression
 let block = ast.body
+
+let appId;
 for(var i = 0;i<block.length;i++){
 
+		if(IS_VARIABLE_DECLARATION(block[i]) && GET_REQUIRE_IDENTIFIER(block[i],"express")){
+			appId = GET_REQUIRE_IDENTIFIER(block[i],"express")
+		}
+	 
+}
+
+for(var i = 0; i < block.length;i++){
+
+	if(IS_VARIABLE_DECLARATION(block[i])){
 		
-	var appId = GET_REQUIRE_IDENTIFIER(block[i],"express")
-	
-	if(appId){
-		console.log(appId);
+		console.log(block[i]);
 	}
+		
 }
 
 
